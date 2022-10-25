@@ -73,7 +73,7 @@ String _convertPath(
     if (importPath.contains(packagePrefix)) {
       importPath = importPath.replaceAll(packagePrefix, libDir);
       importPath = p.relative(importPath, from: fileDir);
-      importPath = importPath.replaceAll(RegExp('\\'), "/");
+      importPath = importPath.replaceAll("\\", "/");
     } else {
       return line;
     }
