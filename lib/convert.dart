@@ -64,7 +64,7 @@ String _convertPath(
   String importPath = line.split(RegExp(r"\'*\'"))[1];
 
   final fileDir = p.dirname(filePath);
-  final libDir = '${Directory.current.path.replaceAll("\\", "/")}/lib/';
+  final libDir = '${Directory.current.path}/lib/';
 
   final packagePrefix = 'package:$projectName/';
 
@@ -73,6 +73,7 @@ String _convertPath(
     if (importPath.contains(packagePrefix)) {
       importPath = importPath.replaceAll(packagePrefix, libDir);
       importPath = p.relative(importPath, from: fileDir);
+      importPath = importPath.replaceAll(RegExp('\\'), "/");
     } else {
       return line;
     }
